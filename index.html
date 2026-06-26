@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elvira's DC Ranch | Scottsdale's Most Dramatic Dining Room – Reserve Your Table</title>
+<meta name="description" content="Authentic Mexican cuisine meets Moroccan-inspired theatre at Elvira's DC Ranch in Scottsdale. Chef Ruben Monroy. 4.5 stars · 635 reviews. Reserve your table tonight.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c;
+  --gold-lt: #e8c97a;
+  --gold-dk: #8b6914;
+  --crimson: #8b1a2a;
+  --deep: #0a0608;
+  --dark: #130c0e;
+  --panel: #1a1012;
+  --panel2: #231518;
+  --smoke: rgba(255,255,255,.06);
+  --muted: rgba(255,255,255,.55);
+  --text: rgba(255,255,255,.88);
+  --border-gold: rgba(201,168,76,.3);
+  --r: 2px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Lato',sans-serif;background:var(--deep);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NOISE TEXTURE ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:linear-gradient(to bottom,rgba(10,6,8,.95) 0%,rgba(10,6,8,.0) 100%);transition:background .3s}
+.nav.scrolled{background:rgba(10,6,8,.97);border-bottom:1px solid var(--border-gold)}
+.nav-logo{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.nav-logo-name{font-family:'Cinzel',serif;font-size:22px;font-weight:400;letter-spacing:.2em;color:#fff;text-transform:uppercase}
+.nav-logo-sub{font-family:'Lato',sans-serif;font-size:9px;font-weight:300;letter-spacing:.4em;color:var(--gold);text-transform:uppercase}
+.nav-phone{font-family:'Lato',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-phone:hover{color:var(--gold-lt)}
+.nav-reserve{font-family:'Cinzel',serif;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--deep);background:var(--gold);padding:12px 24px;text-decoration:none;transition:background .2s,transform .15s;border:1px solid var(--gold)}
+.nav-reserve:hover{background:var(--gold-lt);transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:120px 40px 80px}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#1a0810 0%,#0d0608 40%,#150a0c 70%,#1f0c10 100%)}
+/* Simulated lantern atmosphere */
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 30% 30%,rgba(201,168,76,.12) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 75% 20%,rgba(139,26,42,.18) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 60% 80%,rgba(201,168,76,.08) 0%,transparent 60%),radial-gradient(ellipse 30% 40% at 10% 70%,rgba(139,26,42,.12) 0%,transparent 50%);pointer-events:none}
+.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(60deg,transparent,transparent 80px,rgba(201,168,76,.025) 80px,rgba(201,168,76,.025) 81px),repeating-linear-gradient(-60deg,transparent,transparent 80px,rgba(201,168,76,.025) 80px,rgba(201,168,76,.025) 81px);pointer-events:none}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px}
+.hero-eyebrow{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
+.hero-eyebrow::after{background:linear-gradient(to left,transparent,var(--gold))}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,110px);font-weight:300;color:#fff;line-height:.95;letter-spacing:-.01em;margin-bottom:8px}
+.hero-title em{color:var(--gold);font-style:italic;font-weight:300}
+.hero-sub-title{font-family:'Cinzel',serif;font-size:clamp(11px,1.5vw,14px);font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:32px}
+.hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
+.hero-divider-line{width:48px;height:1px;background:var(--border-gold)}
+.hero-divider-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.hero-desc{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2vw,19px);font-weight:300;font-style:italic;color:rgba(255,255,255,.72);line-height:1.7;max-width:560px;margin:0 auto 40px}
+.hero-cta-group{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn-primary{font-family:'Cinzel',serif;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--deep);background:var(--gold);padding:18px 40px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 24px rgba(201,168,76,.35);text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 6px 32px rgba(201,168,76,.5)}
+.btn-secondary{font-family:'Cinzel',serif;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:transparent;padding:18px 40px;border:1px solid var(--border-gold);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.btn-secondary:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.hero-proof{margin-top:40px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.hero-proof-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.hero-proof-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold);line-height:1}
+.hero-proof-label{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.hero-proof-divider{width:1px;height:40px;background:var(--border-gold)}
+/* Scroll indicator */
+.scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;animation:float 2.5s ease-in-out infinite}
+.scroll-indicator span{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);font-family:'Lato',sans-serif}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+@keyframes scrollPulse{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:top}}
+
+/* ── SOCIAL PROOF BAR ── */
+.proof-bar{background:var(--panel);border-top:1px solid var(--border-gold);border-bottom:1px solid var(--border-gold);padding:16px 40px;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;position:relative;z-index:1}
+.proof-bar-item{display:flex;align-items:center;gap:10px;font-family:'Lato',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.proof-bar-item strong{color:var(--gold);font-size:14px}
+.proof-bar-sep{width:1px;height:24px;background:var(--border-gold)}
+
+/* ── BOOKING SECTION ── */
+.booking-section{background:var(--dark);padding:80px 40px;position:relative}
+.booking-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.section-label{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;text-align:center}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;color:#fff;line-height:1.1;text-align:center;margin-bottom:8px}
+.section-title em{color:var(--gold);font-style:italic}
+.section-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--muted);text-align:center;margin-bottom:48px}
+.booking-layout{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border-gold)}
+.booking-left{padding:48px 40px;background:var(--panel);border-right:1px solid var(--border-gold)}
+.booking-right{padding:48px 40px;background:var(--panel2);position:relative;overflow:hidden}
+.booking-right::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%)}
+
+/* Quick contact form */
+.booking-form-title{font-family:'Cinzel',serif;font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.booking-form-sub{font-family:'Lato',sans-serif;font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6}
+.form-row{display:flex;gap:12px}
+.form-group{flex:1;margin-bottom:16px}
+.form-group label{display:block;font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group select{width:100%;padding:14px 16px;background:rgba(255,255,255,.05);border:1px solid var(--border-gold);color:#fff;font-family:'Lato',sans-serif;font-size:14px;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none;border-radius:0}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);background:rgba(201,168,76,.06)}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23c9a84c' d='M5 6L0 0h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.form-group select option{background:#1a1012;color:#fff}
+.form-group input::placeholder{color:rgba(255,255,255,.25);font-style:italic}
+.btn-form{width:100%;font-family:'Cinzel',serif;font-size:12px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--deep);background:var(--gold);padding:17px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(201,168,76,.3);margin-top:8px}
+.btn-form:hover{background:var(--gold-lt);transform:translateY(-1px);box-shadow:0 6px 28px rgba(201,168,76,.45)}
+.form-lock{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px;letter-spacing:.05em}
+.or-divider{display:flex;align-items:center;gap:12px;margin:24px 0}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border-gold)}
+.or-divider span{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.btn-opentable{width:100%;font-family:'Cinzel',serif;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:transparent;padding:16px;border:1px solid var(--border-gold);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-opentable:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.call-cta{margin-top:20px;text-align:center;padding:16px;background:rgba(201,168,76,.05);border:1px solid var(--border-gold)}
+.call-cta p{font-family:'Lato',sans-serif;font-size:12px;color:var(--muted);margin-bottom:6px;letter-spacing:.06em}
+.call-cta a{font-family:'Cinzel',serif;font-size:18px;font-weight:500;color:var(--gold);text-decoration:none;letter-spacing:.1em}
+.call-cta a:hover{color:var(--gold-lt)}
+
+/* Right side info */
+.booking-info-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;margin-bottom:6px;line-height:1.2}
+.booking-info-title em{color:var(--gold);font-style:italic}
+.booking-info-sub{font-family:'Lato',sans-serif;font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.7}
+.info-block{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.07)}
+.info-block:last-child{border-bottom:none;margin-bottom:0}
+.info-block-label{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.info-block-content{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,.82);line-height:1.8}
+.stars{color:var(--gold);font-size:15px;letter-spacing:2px;margin-bottom:4px}
+.review-count{font-family:'Lato',sans-serif;font-size:12px;color:var(--muted);margin-bottom:12px}
+.review-quote{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.65;border-left:2px solid var(--gold);padding-left:14px}
+.review-attr{font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.06em}
+.uvp-list{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.uvp-item{display:flex;align-items:flex-start;gap:10px;font-family:'Lato',sans-serif;font-size:13px;color:rgba(255,255,255,.75);line-height:1.5}
+.uvp-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px}
+
+/* ── ATMOSPHERE STRIP ── */
+.atmos-strip{background:var(--panel);padding:60px 40px;border-top:1px solid var(--border-gold);border-bottom:1px solid var(--border-gold)}
+.atmos-inner{max-width:900px;margin:0 auto;text-align:center}
+.atmos-pull{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,36px);font-weight:300;font-style:italic;color:#fff;line-height:1.5;margin-bottom:20px}
+.atmos-pull em{color:var(--gold)}
+.atmos-attrs{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:24px}
+.atmos-attr{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.atmos-attr::before{content:'◆';color:var(--gold);font-size:7px}
+
+/* ── EXPERIENCE SECTION ── */
+.experience-section{background:var(--dark);padding:80px 40px}
+.experience-inner{max-width:1100px;margin:0 auto}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-gold);margin-top:48px;border:1px solid var(--border-gold)}
+.exp-card{background:var(--panel);padding:36px 28px;position:relative;overflow:hidden;transition:background .3s}
+.exp-card:hover{background:var(--panel2)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .4s ease}
+.exp-card:hover::before{transform:scaleX(1)}
+.exp-icon{font-size:28px;margin-bottom:16px;display:block}
+.exp-name{font-family:'Cinzel',serif;font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.exp-desc{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,.72);line-height:1.7}
+
+/* ── REVIEWS ── */
+.reviews-section{background:var(--panel);padding:80px 40px;border-top:1px solid var(--border-gold)}
+.reviews-inner{max-width:1100px;margin:0 auto}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.rev-card{background:var(--panel2);padding:28px;border:1px solid var(--border-gold);position:relative}
+.rev-card::after{content:'\201C';font-family:'Cormorant Garamond',serif;font-size:80px;line-height:1;color:var(--gold);opacity:.12;position:absolute;top:8px;left:16px;pointer-events:none}
+.rev-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:12px}
+.rev-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:16px;position:relative;z-index:1}
+.rev-meta{font-family:'Lato',sans-serif;font-size:11px;color:var(--muted);letter-spacing:.08em}
+.rev-meta strong{color:rgba(255,255,255,.6)}
+
+/* ── FINAL CTA ── */
+.final-cta{background:var(--deep);padding:80px 40px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border-gold)}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,168,76,.06) 0%,transparent 70%)}
+.final-cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.final-cta-eyebrow{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.final-cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,66px);font-weight:300;color:#fff;line-height:1.05;margin-bottom:16px}
+.final-cta-title em{color:var(--gold);font-style:italic}
+.final-cta-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--muted);margin-bottom:36px;line-height:1.65}
+
+/* ── FOOTER ── */
+footer{background:var(--panel);padding:32px 40px;border-top:1px solid var(--border-gold);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Cinzel',serif;font-size:16px;font-weight:400;letter-spacing:.2em;color:var(--gold)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-family:'Lato',sans-serif;font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.06em}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(5,3,4,.92);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(6px)}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-card{background:var(--panel);border:1px solid var(--border-gold);width:100%;max-width:860px;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.3,1)}
+.modal-overlay.open .modal-card{transform:translateY(0) scale(1)}
+.modal-header{background:var(--deep);padding:24px 28px;border-bottom:1px solid var(--border-gold);display:flex;align-items:center;justify-content:space-between}
+.modal-header-title{font-family:'Cinzel',serif;font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.modal-close{background:none;border:1px solid var(--border-gold);color:var(--gold);width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.modal-close:hover{background:rgba(201,168,76,.1);border-color:var(--gold)}
+.modal-body{padding:28px}
+.ot-note{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);text-align:center;margin-bottom:20px}
+.ot-embed-wrap{border:1px solid var(--border-gold)}
+.ot-embed-wrap iframe{display:block;width:100%;min-height:500px;border:0}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-content>*{animation:fadeUp .8s ease both}
+.hero-eyebrow{animation-delay:.1s}
+.hero-title{animation-delay:.2s}
+.hero-sub-title{animation-delay:.3s}
+.hero-divider{animation-delay:.35s}
+.hero-desc{animation-delay:.4s}
+.hero-cta-group{animation-delay:.5s}
+.hero-proof{animation-delay:.65s}
+
+/* ── MOBILE ── */
+@media(max-width:767px){
+  .nav{padding:16px 20px}
+  .nav-phone{display:none}
+  .nav-reserve{font-size:10px;padding:10px 18px;letter-spacing:.14em}
+  .hero{padding:100px 20px 70px}
+  .hero-proof{gap:20px}
+  .hero-proof-divider{display:none}
+  .proof-bar{padding:14px 20px;gap:20px}
+  .proof-bar-sep{display:none}
+  .booking-section{padding:52px 20px}
+  .booking-layout{grid-template-columns:1fr}
+  .booking-left{border-right:none;border-bottom:1px solid var(--border-gold);padding:32px 24px}
+  .booking-right{padding:32px 24px}
+  .form-row{flex-direction:column;gap:0}
+  .atmos-strip{padding:44px 20px}
+  .experience-section{padding:52px 20px}
+  .exp-grid{grid-template-columns:1fr}
+  .reviews-section{padding:52px 20px}
+  .reviews-grid{grid-template-columns:1fr}
+  .final-cta{padding:52px 20px}
+  footer{flex-direction:column;align-items:center;text-align:center;padding:24px 20px}
+}
+
+/* ── OT REDIRECT MODAL ── */
+.ot-redirect-wrap{text-align:center;padding:32px 20px 40px}
+.ot-redirect-icon{font-size:48px;margin-bottom:16px;display:block}
+.ot-redirect-title{font-family:'Cinzel',serif;font-size:22px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.ot-redirect-sub{font-family:'Lato',sans-serif;font-size:13px;color:var(--muted);margin-bottom:8px;letter-spacing:.06em}
+.ot-redirect-stars{color:var(--gold);font-size:18px;letter-spacing:3px;margin-bottom:28px}
+.ot-redirect-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Cinzel',serif;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);background:var(--gold);padding:20px 44px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 24px rgba(201,168,76,.4);border:none;cursor:pointer}
+.ot-redirect-btn:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 6px 32px rgba(201,168,76,.55)}
+.ot-redirect-note{font-family:'Lato',sans-serif;font-size:11px;color:rgba(255,255,255,.35);margin-top:14px;letter-spacing:.08em}
+.ot-redirect-badges{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid var(--border-gold)}
+.ot-badge{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:rgba(201,168,76,.07);border:1px solid var(--border-gold);padding:6px 14px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <div class="nav-logo-name">Elvira's</div>
+    <div class="nav-logo-sub">DC Ranch · Scottsdale</div>
+  </div>
+  <a href="tel:+14806242100" class="nav-phone">📞 (480) 624-2100</a>
+  <button class="nav-reserve" onclick="openModal()">Reserve Your Table</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">DC Ranch · Scottsdale</div>
+    <h1 class="hero-title">Scottsdale's Most<br><em>Dramatic</em> Table</h1>
+    <p class="hero-sub-title">Cocina · Tequila · Vino</p>
+    <div class="hero-divider"><div class="hero-divider-line"></div><div class="hero-divider-diamond"></div><div class="hero-divider-line"></div></div>
+    <p class="hero-desc">Authentic Mexican cuisine meets Moroccan-inspired theatre. Chef Ruben Monroy's kitchen. A room unlike anything else in the Valley.</p>
+    <div class="hero-cta-group">
+      <button class="btn-primary" onclick="openModal()">✦ &nbsp;Reserve Your Table</button>
+      <a href="tel:+14806242100" class="btn-secondary">Call to Book</a>
+    </div>
+    <div class="hero-proof">
+      <div class="hero-proof-item">
+        <div class="hero-proof-num">4.5</div>
+        <div class="hero-proof-label">Star Rating</div>
+      </div>
+      <div class="hero-proof-divider"></div>
+      <div class="hero-proof-item">
+        <div class="hero-proof-num">635</div>
+        <div class="hero-proof-label">Reviews</div>
+      </div>
+      <div class="hero-proof-divider"></div>
+      <div class="hero-proof-item">
+        <div class="hero-proof-num">8×</div>
+        <div class="hero-proof-label">Booked Today</div>
+      </div>
+      <div class="hero-proof-divider"></div>
+      <div class="hero-proof-item">
+        <div class="hero-proof-num">Now</div>
+        <div class="hero-proof-label">Open in DC Ranch</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-item"><strong>★ 4.5</strong> OpenTable · 635 Verified Reviews</div>
+  <div class="proof-bar-sep"></div>
+  <div class="proof-bar-item">Good for <strong>Special Occasions</strong></div>
+  <div class="proof-bar-sep"></div>
+  <div class="proof-bar-item">Great for <strong>Creative Cocktails</strong></div>
+  <div class="proof-bar-sep"></div>
+  <div class="proof-bar-item"><strong>Charming</strong> · $31–$50 per person</div>
+</div>
+
+<!-- BOOKING SECTION -->
+<section class="booking-section" id="reserve">
+  <div class="section-label">Reservations</div>
+  <h2 class="section-title">Secure Your <em>Evening</em></h2>
+  <p class="section-sub">Tables fill quickly — especially on weekends and special occasions</p>
+
+  <div class="booking-layout">
+    <div class="booking-left">
+      <div class="booking-form-title">Quick Inquiry</div>
+      <p class="booking-form-sub">Tell us about your visit and we'll confirm your reservation. For immediate booking, use the OpenTable button below.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your first name" id="fname">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name" id="lname">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(480) 000-0000" id="phone">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com" id="email">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Party Size</label>
+          <select id="partysize">
+            <option value="">Guests</option>
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+            <option value="5">5 guests</option>
+            <option value="6">6 guests</option>
+            <option value="7">7 guests</option>
+            <option value="8+">8+ guests</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="prefdate">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Occasion?</label>
+        <select id="occasion">
+          <option value="">Select if applicable</option>
+          <option value="birthday">Birthday Celebration</option>
+          <option value="anniversary">Anniversary</option>
+          <option value="date">Date Night</option>
+          <option value="business">Business Dinner</option>
+          <option value="group">Group Celebration</option>
+          <option value="none">Just Dinner</option>
+        </select>
+      </div>
+      <button class="btn-form" onclick="handleInquiry()">Send Inquiry →</button>
+      <p class="form-lock">🔒 We'll confirm within 2 hours · No spam · Your information stays private</p>
+      <div class="or-divider"><span>or book instantly</span></div>
+      <button class="btn-opentable" onclick="openModal()">
+        <span>📅</span> Reserve via OpenTable
+      </button>
+      <div class="call-cta">
+        <p>Prefer to talk to someone?</p>
+        <a href="tel:+14806242100">(480) 624-2100</a>
+      </div>
+    </div>
+
+    <div class="booking-right">
+      <h3 class="booking-info-title">An Evening <em>Worth Remembering</em></h3>
+      <p class="booking-info-sub">Elvira's DC Ranch is Scottsdale's most visually arresting dining room — Moroccan lanterns, crimson drapes, and a room designed to make every meal feel like an occasion.</p>
+      <div class="info-block">
+        <div class="info-block-label">Hours</div>
+        <div class="info-block-content">
+          Monday – Thursday &nbsp;·&nbsp; 4:30 PM – 10:00 PM<br>
+          Friday &nbsp;·&nbsp; 4:30 PM – 11:00 PM<br>
+          Saturday &nbsp;·&nbsp; 4:00 PM – 11:00 PM<br>
+          Sunday &nbsp;·&nbsp; 4:00 PM – 9:00 PM
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Location</div>
+        <div class="info-block-content">
+          8620 E Anderson Dr, Suite 101<br>
+          Scottsdale, AZ 85255<br>
+          DC Ranch Village · Ample parking
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">What Guests Say</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">4.5 · 635 verified reviews on OpenTable</div>
+        <div class="review-quote">"The atmosphere is unlike anything else in Scottsdale. Every detail — the lanterns, the service, the food — is extraordinary. We come back for every anniversary."</div>
+        <div class="review-attr">— Verified OpenTable Guest</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Why Guests Choose Elvira's</div>
+        <div class="uvp-list">
+          <div class="uvp-item"><div class="uvp-dot"></div>Chef Ruben Monroy's authentic Mexican kitchen</div>
+          <div class="uvp-item"><div class="uvp-dot"></div>Curated tequila and mezcal program</div>
+          <div class="uvp-item"><div class="uvp-dot"></div>Moroccan-inspired atmosphere — photographically stunning</div>
+          <div class="uvp-item"><div class="uvp-dot"></div>Ideal for special occasions and celebrations</div>
+          <div class="uvp-item"><div class="uvp-dot"></div>Sommelier-selected wine list</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE PULL QUOTE -->
+<div class="atmos-strip">
+  <div class="atmos-inner">
+    <p class="atmos-pull">"A room of Moroccan lanterns, crimson curtains, and the kind of <em>warmth</em> that makes you forget the world outside exists."</p>
+    <div class="atmos-attrs">
+      <div class="atmos-attr">Authentic Mexican Cocina</div>
+      <div class="atmos-attr">Curated Tequila Bar</div>
+      <div class="atmos-attr">Sommelier Wine Program</div>
+      <div class="atmos-attr">Private Event Dining</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE SECTION -->
+<section class="experience-section">
+  <div class="experience-inner">
+    <div class="section-label">The Experience</div>
+    <h2 class="section-title" style="text-align:center">Every Detail Is <em>Intentional</em></h2>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <span class="exp-icon">🍽️</span>
+        <div class="exp-name">The Kitchen</div>
+        <p class="exp-desc">Chef Ruben Monroy's menu honors the rich tradition of authentic Mexican cuisine — elevated with contemporary technique and the finest Valley ingredients. Not Tex-Mex. Not fusion. Mexico.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🥃</span>
+        <div class="exp-name">The Tequila Room</div>
+        <p class="exp-desc">One of Scottsdale's most celebrated tequila and mezcal programs. Our bartenders are educators as much as craftsmen — expect to leave with a new appreciation for agave spirits.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🍷</span>
+        <div class="exp-name">The Wine Program</div>
+        <p class="exp-desc">Partnered with Sommelier and Restaurateur Thomas Kaufman, our wine list is curated to complement the bold flavors of the kitchen — Spanish, South American, and Californian selections.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🪔</span>
+        <div class="exp-name">The Atmosphere</div>
+        <p class="exp-desc">Hundreds of hand-selected Moroccan lanterns. Crimson velvet drapes. A room that feels transported. The most photographed dining room in DC Ranch — and one of the most dramatic in Arizona.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🎉</span>
+        <div class="exp-name">Special Occasions</div>
+        <p class="exp-desc">Birthdays, anniversaries, proposals, and celebrations find their perfect home here. Our team anticipates every detail so your evening is extraordinary from the moment you arrive.</p>
+      </div>
+      <div class="exp-card">
+        <span class="exp-icon">🏡</span>
+        <div class="exp-name">DC Ranch Location</div>
+        <p class="exp-desc">Located in the heart of DC Ranch Village at 85255 — Scottsdale's most elegant neighborhood. Ample parking, easy access, and the kind of address that sets the tone before you even walk in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="reviews-inner">
+    <div class="section-label">Guest Testimonials</div>
+    <h2 class="section-title" style="text-align:center">What Guests Are <em>Saying</em></h2>
+    <div class="reviews-grid">
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Elvira's is hands-down the most beautiful restaurant in Scottsdale. The lanterns, the food, the cocktails — every single visit feels like the first time. We celebrated our anniversary here and will do so every year."</p>
+        <div class="rev-meta"><strong>Jennifer M.</strong> · Verified OpenTable Guest</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"The mole alone is worth the drive from Phoenix. But the tequila program is what keeps us coming back. The staff knows every bottle on the shelf and their recommendations are always perfect."</p>
+        <div class="rev-meta"><strong>Carlos R.</strong> · Verified OpenTable Guest</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"I've taken clients here three times and every single one has asked 'can we come back here next time?' The combination of atmosphere, food quality, and service is genuinely hard to match anywhere in the Valley."</p>
+        <div class="rev-meta"><strong>David L.</strong> · Verified OpenTable Guest</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="final-cta-eyebrow">Tables Are Limited</div>
+    <h2 class="final-cta-title">Your Table Is<br><em>Waiting</em></h2>
+    <p class="final-cta-sub">Scottsdale's most distinctive dining room fills quickly. Reserve now to secure your evening.</p>
+    <div class="hero-cta-group">
+      <button class="btn-primary" onclick="openModal()">✦ &nbsp;Reserve via OpenTable</button>
+      <a href="tel:+14806242100" class="btn-secondary">📞 &nbsp;(480) 624-2100</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Elvira's DC Ranch</div>
+  <div class="footer-links">
+    <a href="https://www.elvirasdcranch.com/menu" target="_blank">Menu</a>
+    <a href="#reserve">Reservations</a>
+    <a href="tel:+14806242100">Call Us</a>
+    <a href="https://www.elvirasdcranch.com" target="_blank">Main Site</a>
+  </div>
+  <div class="footer-copy">8620 E Anderson Dr, Suite 101 · Scottsdale, AZ 85255</div>
+</footer>
+
+<!-- OPENTABLE MODAL -->
+<div class="modal-overlay" id="otModal" onclick="closeModalOutside(event)">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-header-title">Reserve Your Table at Elvira's DC Ranch</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="ot-note">You'll be taken to OpenTable to complete your reservation — it only takes 30 seconds.</p>
+      <div class="ot-redirect-wrap">
+        <div class="ot-redirect-icon">🪔</div>
+        <h3 class="ot-redirect-title">Elvira's DC Ranch</h3>
+        <p class="ot-redirect-sub">4.5 Stars · 635 Reviews · Scottsdale, AZ</p>
+        <div class="ot-redirect-stars">★★★★½</div>
+        <a href="https://www.opentable.com/r/elviras-dc-ranch-phoenix" target="_blank" rel="noopener" class="ot-redirect-btn" onclick="handleOTClick()">
+          Reserve Your Table on OpenTable →
+        </a>
+        <p class="ot-redirect-note">Opens in a new tab · Confirmation is instant · No account required</p>
+        <div class="ot-redirect-badges">
+          <div class="ot-badge">Good for Special Occasions</div>
+          <div class="ot-badge">Great for Creative Cocktails</div>
+          <div class="ot-badge">Charming</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   UTM + CLICK ID CAPTURE
+   Reads URL params on load, persists to
+   sessionStorage so they survive scrolling
+   ══════════════════════════════════════ */
+(function(){
+  var params=['utm_source','utm_campaign','utm_medium','utm_term','utm_content',
+              'gclid','gbraid','wbraid','fbclid','ttclid','msclkid'];
+  var qs=new URLSearchParams(window.location.search);
+  params.forEach(function(p){
+    var val=qs.get(p);
+    if(val) sessionStorage.setItem('el_'+p,val);
+  });
+  sessionStorage.setItem('el_final_url',window.location.href);
+  sessionStorage.setItem('el_referrer',document.referrer||'direct');
+})();
+
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name)
+    || sessionStorage.getItem('el_'+name)
+    || '';
+}
+
+/* ── META PIXEL — Elvira's DC Ranch ── */
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','977272447974226');
+fbq('track','PageView');
+
+/* ── NAV SCROLL ── */
+var nav=document.getElementById('mainNav');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+/* ── MODAL ── */
+function handleOTClick(){
+  fbq('track','InitiateCheckout',{content_name:'Table Reservation',content_category:'Restaurant'});
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'ot_click'});
+}
+function openModal(){
+  fbq('track','InitiateCheckout',{content_name:'Table Reservation',content_category:'Restaurant'});
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'ot_click'});
+  window.open('https://www.opentable.com/r/elviras-dc-ranch-phoenix','_blank','noopener,noreferrer');
+}
+function closeModal(){
+  document.getElementById('otModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalOutside(e){
+  if(e.target===document.getElementById('otModal')) closeModal();
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape') closeModal();});
+
+/* ── PHONE FORMATTER ── */
+var phoneInput=document.getElementById('phone');
+if(phoneInput){
+  phoneInput.addEventListener('input',function(e){
+    var v=e.target.value.replace(/\D/g,'');
+    if(v.length>10) v=v.slice(0,10);
+    if(v.length>=7) v='('+v.slice(0,3)+') '+v.slice(3,6)+'-'+v.slice(6);
+    else if(v.length>=4) v='('+v.slice(0,3)+') '+v.slice(3);
+    else if(v.length>=1) v='('+v;
+    e.target.value=v;
+  });
+}
+
+/* ── FORM INQUIRY ── */
+function handleInquiry(){
+  var fname=document.getElementById('fname');
+  var lname=document.getElementById('lname');
+  var phone=document.getElementById('phone');
+  var email=document.getElementById('email');
+  var partysize=document.getElementById('partysize');
+  var prefdate=document.getElementById('prefdate');
+  var occasion=document.getElementById('occasion');
+  var ok=true;
+  [fname,lname,phone,email].forEach(function(f){f.style.borderColor='';});
+  if(!fname.value.trim()){fname.style.borderColor='#8b1a2a';ok=false;}
+  if(!lname.value.trim()){lname.style.borderColor='#8b1a2a';ok=false;}
+  if(phone.value.replace(/\D/g,'').length!==10){phone.style.borderColor='#8b1a2a';ok=false;}
+  if(!email.value.trim()||email.value.indexOf('@')===-1){email.style.borderColor='#8b1a2a';ok=false;}
+  if(ok){
+    fbq('track','Lead',{content_name:'Reservation Inquiry',content_category:'Restaurant'});
+    /* Replace with your webhook/CRM endpoint */
+    /* ── BUILD LEAD PAYLOAD (hidden fields included) ── */
+    var payload={
+      /* Contact */
+      source:         'Elviras DC Ranch LP',
+      first_name:     fname.value.trim(),
+      last_name:      lname.value.trim(),
+      full_name:      fname.value.trim()+' '+lname.value.trim(),
+      phone:          phone.value.trim(),
+      email:          email.value.trim(),
+      party_size:     partysize.value,
+      preferred_date: prefdate.value,
+      occasion:       occasion.value,
+      /* UTM Attribution */
+      utm_source:     getParam('utm_source'),
+      utm_campaign:   getParam('utm_campaign'),
+      utm_medium:     getParam('utm_medium'),
+      utm_term:       getParam('utm_term'),
+      utm_content:    getParam('utm_content'),
+      /* Click IDs */
+      gclid:          getParam('gclid'),
+      fbclid:         getParam('fbclid'),
+      gbraid:         getParam('gbraid'),
+      wbraid:         getParam('wbraid'),
+      ttclid:         getParam('ttclid'),
+      msclkid:        getParam('msclkid'),
+      /* Page context */
+      final_url:      getParam('final_url')||window.location.href,
+      referrer:       getParam('referrer')||document.referrer||'direct',
+      landing_page:   window.location.pathname,
+      /* Timestamps */
+      timestamp:      new Date().toLocaleString('en-US',{timeZone:'America/Phoenix'}),
+      timestamp_utc:  new Date().toISOString(),
+    };
+
+    /* Send to Zapier */
+    fetch('https://hooks.zapier.com/hooks/catch/YOUR_ZAPIER_HOOK/',{
+      method:'POST',
+      body:JSON.stringify(payload)
+    }).catch(function(){});
+    /* Success state */
+    var btn=document.querySelector('.btn-form');
+    btn.textContent='✓ Inquiry Received — We\'ll Confirm Within 2 Hours';
+    btn.style.background='#2d5a27';
+    btn.style.cursor='default';
+    btn.disabled=true;
+  }
+}
+
+/* ── CALLRAIL: replace number when CallRail is active ── */
+/* CallRail's JS snippet will auto-swap numbers once installed */
+
+/* ── SCROLL ANIMATIONS ── */
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.exp-card,.rev-card,.info-block').forEach(function(el){
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='opacity .6s ease, transform .6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
